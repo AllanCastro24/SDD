@@ -1,0 +1,12 @@
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\bin\Debug\naive-bayes.exe.config
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\bin\Debug\naive-bayes.exe
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\bin\Debug\naive-bayes.pdb
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\bin\Debug\MaterialSkin.dll
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.AssemblyReference.cache
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive_bayes.principal.resources
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive_bayes.Properties.Resources.resources
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.GenerateResource.cache
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.CoreCompileInputs.cache
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.CopyComplete
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.exe
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.pdb
