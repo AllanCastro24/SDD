@@ -11,4 +11,9 @@ Clasificador de naive bayes en excel, funcionando con tratado de ceros
 - Métodos de anchos iguales y frecuencias iguales para variables sin discretizar
 
 ## Naive Bayes en Visual Studio (C#)
-En construcción
+
+Clasificador Naive Bayes en C#
+
+Para agregar un dataset, crear una carpeta en la unidad C: llamada archivo y dentro agregar el dataset. Ej: C:/archivo/dataset.csv
+
+Solo admite Dataset's en formato csv o txt
