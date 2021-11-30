@@ -274,6 +274,7 @@ namespace naive_bayes
             this.btn_cargar_pruebas_externo.Text = "...";
             this.btn_cargar_pruebas_externo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btn_cargar_pruebas_externo.UseVisualStyleBackColor = true;
+            this.btn_cargar_pruebas_externo.Click += new System.EventHandler(this.btn_cargar_pruebas_externo_Click);
             // 
             // materialLabel5
             // 
