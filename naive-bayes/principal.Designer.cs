@@ -35,7 +35,7 @@ namespace naive_bayes
             // btn_salir
             // 
             this.btn_salir.Depth = 0;
-            this.btn_salir.Location = new System.Drawing.Point(1101, 33);
+            this.btn_salir.Location = new System.Drawing.Point(1461, 31);
             this.btn_salir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Primary = true;
@@ -49,7 +49,7 @@ namespace naive_bayes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 760);
+            this.ClientSize = new System.Drawing.Size(1494, 864);
             this.ControlBox = false;
             this.Controls.Add(this.btn_salir);
             this.Name = "principal";
