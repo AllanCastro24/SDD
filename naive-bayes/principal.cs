@@ -29,5 +29,15 @@ namespace naive_bayes
         {
             Application.Exit();
         }
+
+        private void btn_cargar_dataset_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rb_mismo_dataset_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
