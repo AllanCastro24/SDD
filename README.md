@@ -19,16 +19,19 @@ Para agregar un dataset, crear una carpeta en la unidad C: llamada archivo y den
 Solo admite Dataset's en formato csv o txt
 
 Equipo 1,4
-•	Intervalos de frecuencias iguales, No incluir función de densidad, no Intervalos de anchos iguales
-•	No incluir validación cruzada
-•	No incluir archivo de pruebas externo
+*	Intervalos de frecuencias iguales, No incluir funcion de densidad, no Intervalos de anchos iguales
+*	No incluir validacion cruzada
+*	No incluir archivo de pruebas externo
+
 Equipo 2, 5
-•	Función de densidad (distribución normal), no Intervalos de frecuencias iguales, no Intervalos de anchos iguales
-•	No incluir validación cruzada
-•	No incluir archivo de pruebas externo
+*	Funcion de densidad (distribucion normal), no Intervalos de frecuencias iguales, no Intervalos de anchos iguales
+*	No incluir validacion cruzada
+*	No incluir archivo de pruebas externo
+
 Equipo 3
-•	Intervalos de anchos iguales,  No incluir función de densidad, Intervalos de frecuencias iguales
+*	Intervalos de anchos iguales,  No incluir funcion de densidad, Intervalos de frecuencias iguales
+
 Equipo 3
-•	Intervalos de anchos iguales,  No incluir función de densidad, no Intervalos de frecuencias iguales
-•	No incluir validación cruzada
-•	No incluir archivo de pruebas externo
+*	Intervalos de anchos iguales,  No incluir funcion de densidad, no Intervalos de frecuencias iguales
+*	No incluir validacion cruzada
+*	No incluir archivo de pruebas externo
