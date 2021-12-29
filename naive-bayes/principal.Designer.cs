@@ -35,26 +35,22 @@ namespace naive_bayes
             this.btn_cargar_dataset = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rb_validacion_cruzada = new MaterialSkin.Controls.MaterialRadioButton();
+            this.cb_mismo_dataset = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txt_poracentaje_entrenamiento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.rb_validacion_simple = new MaterialSkin.Controls.MaterialRadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btn_cargar_pruebas_externo = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.txt_ruta_dataset_pruebas = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txt_intervalo_discretizacion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btn_analisis = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.cb_mismo_dataset = new MaterialSkin.Controls.MaterialCheckBox();
-            this.cb_archivo_externo = new MaterialSkin.Controls.MaterialCheckBox();
+            this.dg_datos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_salir
             // 
             this.btn_salir.Depth = 0;
-            this.btn_salir.Location = new System.Drawing.Point(686, 32);
+            this.btn_salir.Location = new System.Drawing.Point(1576, 28);
             this.btn_salir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Primary = true;
@@ -126,7 +122,6 @@ namespace naive_bayes
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cb_mismo_dataset);
-            this.groupBox1.Controls.Add(this.rb_validacion_cruzada);
             this.groupBox1.Controls.Add(this.materialLabel3);
             this.groupBox1.Controls.Add(this.txt_poracentaje_entrenamiento);
             this.groupBox1.Controls.Add(this.rb_validacion_simple);
@@ -137,22 +132,22 @@ namespace naive_bayes
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
-            // rb_validacion_cruzada
+            // cb_mismo_dataset
             // 
-            this.rb_validacion_cruzada.AutoSize = true;
-            this.rb_validacion_cruzada.Depth = 0;
-            this.rb_validacion_cruzada.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb_validacion_cruzada.Location = new System.Drawing.Point(115, 180);
-            this.rb_validacion_cruzada.Margin = new System.Windows.Forms.Padding(0);
-            this.rb_validacion_cruzada.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.rb_validacion_cruzada.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rb_validacion_cruzada.Name = "rb_validacion_cruzada";
-            this.rb_validacion_cruzada.Ripple = true;
-            this.rb_validacion_cruzada.Size = new System.Drawing.Size(271, 30);
-            this.rb_validacion_cruzada.TabIndex = 10;
-            this.rb_validacion_cruzada.TabStop = true;
-            this.rb_validacion_cruzada.Text = "Validación cruzada (50% - 50%)";
-            this.rb_validacion_cruzada.UseVisualStyleBackColor = true;
+            this.cb_mismo_dataset.AutoSize = true;
+            this.cb_mismo_dataset.Depth = 0;
+            this.cb_mismo_dataset.Font = new System.Drawing.Font("Roboto", 10F);
+            this.cb_mismo_dataset.Location = new System.Drawing.Point(63, 63);
+            this.cb_mismo_dataset.Margin = new System.Windows.Forms.Padding(0);
+            this.cb_mismo_dataset.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.cb_mismo_dataset.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cb_mismo_dataset.Name = "cb_mismo_dataset";
+            this.cb_mismo_dataset.Ripple = true;
+            this.cb_mismo_dataset.Size = new System.Drawing.Size(151, 30);
+            this.cb_mismo_dataset.TabIndex = 11;
+            this.cb_mismo_dataset.Text = "Mismo dataset:";
+            this.cb_mismo_dataset.UseVisualStyleBackColor = true;
+            this.cb_mismo_dataset.CheckedChanged += new System.EventHandler(this.cb_mismo_dataset_CheckedChanged);
             // 
             // materialLabel3
             // 
@@ -181,6 +176,7 @@ namespace naive_bayes
             this.txt_poracentaje_entrenamiento.Size = new System.Drawing.Size(86, 28);
             this.txt_poracentaje_entrenamiento.TabIndex = 8;
             this.txt_poracentaje_entrenamiento.UseSystemPasswordChar = false;
+            this.txt_poracentaje_entrenamiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_poracentaje_entrenamiento_KeyPress);
             // 
             // rb_validacion_simple
             // 
@@ -199,48 +195,6 @@ namespace naive_bayes
             this.rb_validacion_simple.Text = "Validación simple";
             this.rb_validacion_simple.UseVisualStyleBackColor = true;
             this.rb_validacion_simple.CheckedChanged += new System.EventHandler(this.rb_validacion_simple_CheckedChanged);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cb_archivo_externo);
-            this.groupBox2.Controls.Add(this.btn_cargar_pruebas_externo);
-            this.groupBox2.Controls.Add(this.txt_ruta_dataset_pruebas);
-            this.groupBox2.Location = new System.Drawing.Point(39, 476);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(635, 156);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            // 
-            // btn_cargar_pruebas_externo
-            // 
-            this.btn_cargar_pruebas_externo.Depth = 0;
-            this.btn_cargar_pruebas_externo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cargar_pruebas_externo.Location = new System.Drawing.Point(518, 85);
-            this.btn_cargar_pruebas_externo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btn_cargar_pruebas_externo.Name = "btn_cargar_pruebas_externo";
-            this.btn_cargar_pruebas_externo.Primary = true;
-            this.btn_cargar_pruebas_externo.Size = new System.Drawing.Size(56, 28);
-            this.btn_cargar_pruebas_externo.TabIndex = 4;
-            this.btn_cargar_pruebas_externo.Text = "...";
-            this.btn_cargar_pruebas_externo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_cargar_pruebas_externo.UseVisualStyleBackColor = true;
-            this.btn_cargar_pruebas_externo.Click += new System.EventHandler(this.btn_cargar_pruebas_externo_Click);
-            // 
-            // txt_ruta_dataset_pruebas
-            // 
-            this.txt_ruta_dataset_pruebas.Depth = 0;
-            this.txt_ruta_dataset_pruebas.Enabled = false;
-            this.txt_ruta_dataset_pruebas.Hint = "";
-            this.txt_ruta_dataset_pruebas.Location = new System.Drawing.Point(115, 85);
-            this.txt_ruta_dataset_pruebas.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txt_ruta_dataset_pruebas.Name = "txt_ruta_dataset_pruebas";
-            this.txt_ruta_dataset_pruebas.PasswordChar = '\0';
-            this.txt_ruta_dataset_pruebas.SelectedText = "";
-            this.txt_ruta_dataset_pruebas.SelectionLength = 0;
-            this.txt_ruta_dataset_pruebas.SelectionStart = 0;
-            this.txt_ruta_dataset_pruebas.Size = new System.Drawing.Size(373, 28);
-            this.txt_ruta_dataset_pruebas.TabIndex = 3;
-            this.txt_ruta_dataset_pruebas.UseSystemPasswordChar = false;
             // 
             // materialLabel5
             // 
@@ -270,6 +224,7 @@ namespace naive_bayes
             this.txt_intervalo_discretizacion.Size = new System.Drawing.Size(76, 28);
             this.txt_intervalo_discretizacion.TabIndex = 9;
             this.txt_intervalo_discretizacion.UseSystemPasswordChar = false;
+            this.txt_intervalo_discretizacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_intervalo_discretizacion_KeyPress);
             // 
             // btn_analisis
             // 
@@ -284,50 +239,29 @@ namespace naive_bayes
             this.btn_analisis.UseVisualStyleBackColor = true;
             this.btn_analisis.Click += new System.EventHandler(this.materialRaisedButton1_Click_1);
             // 
-            // cb_mismo_dataset
+            // dg_datos
             // 
-            this.cb_mismo_dataset.AutoSize = true;
-            this.cb_mismo_dataset.Depth = 0;
-            this.cb_mismo_dataset.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cb_mismo_dataset.Location = new System.Drawing.Point(63, 63);
-            this.cb_mismo_dataset.Margin = new System.Windows.Forms.Padding(0);
-            this.cb_mismo_dataset.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cb_mismo_dataset.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cb_mismo_dataset.Name = "cb_mismo_dataset";
-            this.cb_mismo_dataset.Ripple = true;
-            this.cb_mismo_dataset.Size = new System.Drawing.Size(151, 30);
-            this.cb_mismo_dataset.TabIndex = 11;
-            this.cb_mismo_dataset.Text = "Mismo dataset:";
-            this.cb_mismo_dataset.UseVisualStyleBackColor = true;
-            this.cb_mismo_dataset.CheckedChanged += new System.EventHandler(this.cb_mismo_dataset_CheckedChanged);
-            // 
-            // cb_archivo_externo
-            // 
-            this.cb_archivo_externo.AutoSize = true;
-            this.cb_archivo_externo.Depth = 0;
-            this.cb_archivo_externo.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cb_archivo_externo.Location = new System.Drawing.Point(63, 18);
-            this.cb_archivo_externo.Margin = new System.Windows.Forms.Padding(0);
-            this.cb_archivo_externo.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.cb_archivo_externo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cb_archivo_externo.Name = "cb_archivo_externo";
-            this.cb_archivo_externo.Ripple = true;
-            this.cb_archivo_externo.Size = new System.Drawing.Size(246, 30);
-            this.cb_archivo_externo.TabIndex = 12;
-            this.cb_archivo_externo.Text = "Archivo de pruebas externo:";
-            this.cb_archivo_externo.UseVisualStyleBackColor = true;
-            this.cb_archivo_externo.CheckedChanged += new System.EventHandler(this.cb_archivo_externo_CheckedChanged);
+            this.dg_datos.AllowUserToAddRows = false;
+            this.dg_datos.AllowUserToDeleteRows = false;
+            this.dg_datos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_datos.Location = new System.Drawing.Point(728, 117);
+            this.dg_datos.Name = "dg_datos";
+            this.dg_datos.ReadOnly = true;
+            this.dg_datos.RowHeadersWidth = 51;
+            this.dg_datos.RowTemplate.Height = 24;
+            this.dg_datos.Size = new System.Drawing.Size(843, 515);
+            this.dg_datos.TabIndex = 11;
             // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 763);
+            this.ClientSize = new System.Drawing.Size(1614, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.dg_datos);
             this.Controls.Add(this.btn_analisis);
             this.Controls.Add(this.txt_intervalo_discretizacion);
             this.Controls.Add(this.materialLabel5);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_cargar_dataset);
             this.Controls.Add(this.txt_ruta_dataset);
@@ -339,8 +273,7 @@ namespace naive_bayes
             this.Load += new System.EventHandler(this.principal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,15 +290,11 @@ namespace naive_bayes
         private MaterialSkin.Controls.MaterialRadioButton rb_validacion_simple;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_poracentaje_entrenamiento;
-        private MaterialSkin.Controls.MaterialRadioButton rb_validacion_cruzada;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private MaterialSkin.Controls.MaterialRaisedButton btn_cargar_pruebas_externo;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txt_ruta_dataset_pruebas;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_intervalo_discretizacion;
         private MaterialSkin.Controls.MaterialRaisedButton btn_analisis;
         private MaterialSkin.Controls.MaterialCheckBox cb_mismo_dataset;
-        private MaterialSkin.Controls.MaterialCheckBox cb_archivo_externo;
+        private System.Windows.Forms.DataGridView dg_datos;
     }
 }
 
