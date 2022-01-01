@@ -98,7 +98,11 @@ namespace naive_bayes
 
         private void rb_validacion_simple_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (!cb_mismo_dataset.Checked)
+            {
+                MessageBox.Show("No indicó pruebas", "Mensaje del sistema");
+                rb_validacion_simple.Checked = false;
+            }
         }
 
         public DataTable ConvertToDataTable(String ruta)
