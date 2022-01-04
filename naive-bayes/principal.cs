@@ -85,15 +85,21 @@ namespace naive_bayes
 
         private void materialRaisedButton1_Click_1(object sender, EventArgs e)
         {
-            //if (txt_ruta_dataset.Text == "")
-            //{
-            //MessageBox.Show("Aun no ha indicado dataset","Mensaje del sistema");
-            //}
-            //else
-            //{
-            //dg_datos.DataSource = ConvertToDataTable(txt_ruta_dataset.Text);
-            //}
-
+            if (dg_datos.RowCount == 0)
+            {
+                MessageBox.Show("Aun no tiene un dataset", "Mensaje del sistema");
+            }
+            else
+            {
+                if (txt_intervalo_discretizacion.Text == "")
+                {
+                    MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
+                }
+                else
+                {
+                    //Comienza el programa
+                }
+            }
         }
 
         private void rb_validacion_simple_CheckedChanged(object sender, EventArgs e)
