@@ -251,5 +251,24 @@ namespace naive_bayes
                 }
             }
         }
+
+        private void materialRaisedButton1_Click_2(object sender, EventArgs e)
+        {
+            if (dg_datos.RowCount == 0)
+            {
+                MessageBox.Show("Aun no tiene un dataset", "Mensaje del sistema");
+            }
+            else
+            {
+                if (txt_intervalo_discretizacion.Text == "")
+                {
+                    MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
+                }
+                else
+                {
+                    //Comienza el programa
+                }
+            }
+        }
     }
 }
