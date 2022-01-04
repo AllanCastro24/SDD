@@ -85,15 +85,15 @@ namespace naive_bayes
 
         private void materialRaisedButton1_Click_1(object sender, EventArgs e)
         {
-            if (txt_ruta_dataset.Text == "")
-            {
-                MessageBox.Show("Aun no ha indicado dataset","Mensaje del sistema");
-            }
-            else
-            {
-                dg_datos.DataSource = ConvertToDataTable(txt_ruta_dataset.Text);
-            }
-            
+            //if (txt_ruta_dataset.Text == "")
+            //{
+            //MessageBox.Show("Aun no ha indicado dataset","Mensaje del sistema");
+            //}
+            //else
+            //{
+            //dg_datos.DataSource = ConvertToDataTable(txt_ruta_dataset.Text);
+            //}
+
         }
 
         private void rb_validacion_simple_CheckedChanged(object sender, EventArgs e)
@@ -105,32 +105,39 @@ namespace naive_bayes
             }
         }
 
-        public DataTable ConvertToDataTable(String ruta)
+        public DataTable ConvertToDataTable(String ruta, int columnas, int indice)
         {
-            //String[] columnas = new String[6];
-            //columnas[0] = "Clave";
-            //columnas[1] = "Empresa";
-            //columnas[2] = "Correo";
-            //columnas[3] = "Tiempo";
-            //columnas[4] = "Edad";
-            //columnas[5] = "Escolaridad";
+            int contador = 0;
             DataTable tbl = new DataTable();
             //Se crea variable llamada: lector, para abrir el archivo csv donde están almacenadas los datos de los alumnos.
             var lector = new StreamReader(File.OpenRead(@ruta));
-            for (int col = 0; col < 6; col++)
-                //tbl.Columns.Add(new DataColumn("Columna " + (columnas[col]).ToString()));
-                tbl.Columns.Add(new DataColumn("Columna " + col.ToString()));
             //En el ciclo while, recorre todas las lineas del archivo
 
             while (!lector.EndOfStream)
             {
+                contador = contador + 1;
                 //Guarda el contenido de cada linea
                 var line = lector.ReadLine();
                 //Nombre de empresa, edad, tiempo y correo
                 var cols = line.Split(',');
+                if (contador == 1 )
+                {
+                    if (rb_si.Checked)
+                    {
+                        for (int col = 0; col < columnas; col++)
+                            tbl.Columns.Add(new DataColumn(cols[col]));
 
+                        continue;
+                    }
+                    else
+                    {
+                        for (int col = 0; col < columnas; col++)
+                            tbl.Columns.Add(new DataColumn("Columna " + (col + 1).ToString()));
+                    }
+                    
+                }
                 DataRow dr = tbl.NewRow();
-                for (int cIndex = 0; cIndex < 6; cIndex++)
+                for (int cIndex = 0; cIndex < columnas; cIndex++)
                 {
                     dr[cIndex] = cols[cIndex];
                 }
@@ -187,6 +194,55 @@ namespace naive_bayes
             {
                 MessageBox.Show("Aun no ha indicado dataset", "Mensaje del sistema");
                 txt_intervalo_discretizacion.Text = "";
+            }
+        }
+
+        private void rb_no_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txt_ruta_dataset.Text == "")
+            {
+                MessageBox.Show("Aun no ha indicado dataset","Mensaje del sistema");
+                rb_no.Checked = false;
+            }
+            else
+            {
+                if (rb_no.Checked)
+                {
+                    dg_datos.DataSource = ConvertToDataTable(txt_ruta_dataset.Text, total_columnas(txt_ruta_dataset.Text),0);
+                }
+            }
+        }
+
+        public int total_columnas(String ruta)
+        {
+            int columnas = 0;
+            //Se crea variable llamada: lector, para abrir el archivo csv donde están almacenadas los datos de los alumnos.
+            var lector = new StreamReader(File.OpenRead(@ruta));
+            //En el ciclo while, recorre todas las lineas del archivo
+
+            while (!lector.EndOfStream)
+            {
+                //Guarda el contenido de cada linea
+                var line = lector.ReadLine();
+                var cols = line.Split(',');
+                columnas = cols.Count();
+            }
+            return columnas;
+        }
+
+        private void rb_si_CheckedChanged(object sender, EventArgs e)
+        {
+            if (txt_ruta_dataset.Text == "")
+            {
+                MessageBox.Show("Aun no ha indicado dataset", "Mensaje del sistema");
+                rb_si.Checked = false;
+            }
+            else
+            {
+                if (rb_si.Checked)
+                {
+                    dg_datos.DataSource = ConvertToDataTable(txt_ruta_dataset.Text, total_columnas(txt_ruta_dataset.Text),1);
+                }
             }
         }
     }

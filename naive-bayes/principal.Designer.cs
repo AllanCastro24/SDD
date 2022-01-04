@@ -43,8 +43,13 @@ namespace naive_bayes
             this.txt_intervalo_discretizacion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btn_analisis = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dg_datos = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.rb_si = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rb_no = new MaterialSkin.Controls.MaterialRadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_salir
@@ -126,7 +131,7 @@ namespace naive_bayes
             this.groupBox1.Controls.Add(this.txt_poracentaje_entrenamiento);
             this.groupBox1.Controls.Add(this.rb_validacion_simple);
             this.groupBox1.Controls.Add(this.materialLabel2);
-            this.groupBox1.Location = new System.Drawing.Point(39, 198);
+            this.groupBox1.Location = new System.Drawing.Point(39, 377);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(635, 255);
             this.groupBox1.TabIndex = 5;
@@ -252,12 +257,74 @@ namespace naive_bayes
             this.dg_datos.Size = new System.Drawing.Size(843, 515);
             this.dg_datos.TabIndex = 11;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rb_no);
+            this.groupBox2.Controls.Add(this.rb_si);
+            this.groupBox2.Controls.Add(this.materialLabel4);
+            this.groupBox2.Location = new System.Drawing.Point(39, 174);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(635, 163);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(26, 28);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(263, 30);
+            this.materialLabel4.TabIndex = 0;
+            this.materialLabel4.Text = "Contiene encabezados?";
+            // 
+            // rb_si
+            // 
+            this.rb_si.AutoSize = true;
+            this.rb_si.Depth = 0;
+            this.rb_si.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rb_si.Location = new System.Drawing.Point(34, 83);
+            this.rb_si.Margin = new System.Windows.Forms.Padding(0);
+            this.rb_si.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rb_si.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rb_si.Name = "rb_si";
+            this.rb_si.Ripple = true;
+            this.rb_si.Size = new System.Drawing.Size(61, 38);
+            this.rb_si.TabIndex = 1;
+            this.rb_si.TabStop = true;
+            this.rb_si.Text = "Si";
+            this.rb_si.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.rb_si.UseVisualStyleBackColor = true;
+            this.rb_si.CheckedChanged += new System.EventHandler(this.rb_si_CheckedChanged);
+            // 
+            // rb_no
+            // 
+            this.rb_no.AutoSize = true;
+            this.rb_no.Depth = 0;
+            this.rb_no.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rb_no.Location = new System.Drawing.Point(349, 83);
+            this.rb_no.Margin = new System.Windows.Forms.Padding(0);
+            this.rb_no.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rb_no.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rb_no.Name = "rb_no";
+            this.rb_no.Ripple = true;
+            this.rb_no.Size = new System.Drawing.Size(65, 38);
+            this.rb_no.TabIndex = 2;
+            this.rb_no.TabStop = true;
+            this.rb_no.Text = "No";
+            this.rb_no.UseVisualStyleBackColor = true;
+            this.rb_no.CheckedChanged += new System.EventHandler(this.rb_no_CheckedChanged);
+            // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1614, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dg_datos);
             this.Controls.Add(this.btn_analisis);
             this.Controls.Add(this.txt_intervalo_discretizacion);
@@ -274,6 +341,8 @@ namespace naive_bayes
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +364,10 @@ namespace naive_bayes
         private MaterialSkin.Controls.MaterialRaisedButton btn_analisis;
         private MaterialSkin.Controls.MaterialCheckBox cb_mismo_dataset;
         private System.Windows.Forms.DataGridView dg_datos;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MaterialSkin.Controls.MaterialRadioButton rb_no;
+        private MaterialSkin.Controls.MaterialRadioButton rb_si;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
     }
 }
 
