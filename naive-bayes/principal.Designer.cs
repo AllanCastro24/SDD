@@ -35,6 +35,7 @@ namespace naive_bayes
             this.btn_cargar_dataset = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cb_mismo_dataset = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txt_poracentaje_entrenamiento = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -47,7 +48,6 @@ namespace naive_bayes
             this.rb_no = new MaterialSkin.Controls.MaterialRadioButton();
             this.rb_si = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -139,6 +139,19 @@ namespace naive_bayes
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 192);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(184, 54);
+            this.materialRaisedButton1.TabIndex = 12;
+            this.materialRaisedButton1.Text = "Análisis";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click_2);
+            // 
             // cb_mismo_dataset
             // 
             this.cb_mismo_dataset.AutoSize = true;
@@ -184,6 +197,7 @@ namespace naive_bayes
             this.txt_poracentaje_entrenamiento.TabIndex = 8;
             this.txt_poracentaje_entrenamiento.UseSystemPasswordChar = false;
             this.txt_poracentaje_entrenamiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_poracentaje_entrenamiento_KeyPress);
+            this.txt_poracentaje_entrenamiento.TextChanged += new System.EventHandler(this.txt_poracentaje_entrenamiento_TextChanged);
             // 
             // rb_validacion_simple
             // 
@@ -319,19 +333,6 @@ namespace naive_bayes
             this.materialLabel4.Size = new System.Drawing.Size(210, 24);
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Contiene encabezados?";
-            // 
-            // materialRaisedButton1
-            // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 192);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(184, 54);
-            this.materialRaisedButton1.TabIndex = 12;
-            this.materialRaisedButton1.Text = "Análisis";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click_2);
             // 
             // principal
             // 

@@ -270,5 +270,14 @@ namespace naive_bayes
                 }
             }
         }
+
+        private void txt_poracentaje_entrenamiento_TextChanged(object sender, EventArgs e)
+        {
+            if (Int16.Parse(txt_poracentaje_entrenamiento.Text) > 100)
+            {
+                MessageBox.Show("No se permite más del 100%", "Mensaje del sistema");
+                txt_poracentaje_entrenamiento.Text = "";
+            }
+        }
     }
 }
