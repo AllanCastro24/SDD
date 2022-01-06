@@ -77,7 +77,7 @@ namespace naive_bayes
                 else
                 {
                     rb_validacion_simple.Checked = false;
-                    txt_poracentaje_entrenamiento.Text = "";
+                    txt_poracentaje_entrenamiento.Text = "0";
                 }
                     
             }
@@ -97,7 +97,22 @@ namespace naive_bayes
                 }
                 else
                 {
-                    //Comienza el programa
+                    //Exportar a una matriz
+                    String[,] conjunto = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
+
+                    foreach (DataGridViewRow row in dg_datos.Rows)
+                    {
+                        if (!row.IsNewRow)
+                        {
+                            foreach (DataGridViewCell cel in row.Cells)
+                            {
+                                conjunto[cel.RowIndex, cel.ColumnIndex] = cel.Value.ToString();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show(dg_datos.Rows.Count.ToString(), "Mensaje del sistema");
+                    dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
                 }
             }
         }
@@ -278,6 +293,54 @@ namespace naive_bayes
                 MessageBox.Show("No se permite más del 100%", "Mensaje del sistema");
                 txt_poracentaje_entrenamiento.Text = "";
             }
+        }
+
+        public DataTable MatrizEvaluacion(int columnas, String[,] conjunto, int rows)
+        {
+            int contador = 0;
+            DataTable tbl = new DataTable();
+            String[] encabezado = new string[5];
+            encabezado[0] = "Categoría";
+            encabezado[1] = "Precision";
+            encabezado[2] = "Exhaustividad";
+            encabezado[3] = "F1";
+            encabezado[4] = "Soporte";
+            //Columnas
+            for (int col = 0; col < columnas; col++)
+                tbl.Columns.Add(new DataColumn(encabezado[col]));
+
+            //En el ciclo while, recorre todas las lineas del archivo
+            while (!(contador == rows))
+            {
+                //Registros
+                DataRow dr = tbl.NewRow();
+                for (int cIndex = 0; cIndex < columnas; cIndex++)
+                {
+                        dr[cIndex] = conjunto[1,cIndex];
+                }
+
+                tbl.Rows.Add(dr);
+                contador = contador + 1;
+            }
+
+            return tbl;
+        }
+
+        public DataTable MatrizConfusion(int columnas, String[,] conjunto, int rows)
+        {
+            DataTable tbl = new DataTable();
+
+            return tbl;
+        }
+
+        public void discretizar()
+        {
+
+        }
+
+        public void NaiveBayes()
+        {
+
         }
     }
 }
