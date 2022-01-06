@@ -48,9 +48,17 @@ namespace naive_bayes
             this.rb_no = new MaterialSkin.Controls.MaterialRadioButton();
             this.rb_si = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.txt_accuracy = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.dg_metricas_evaluacion = new System.Windows.Forms.DataGridView();
+            this.dg_matriz_confusion = new System.Windows.Forms.DataGridView();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_metricas_evaluacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_matriz_confusion)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_salir
@@ -270,7 +278,7 @@ namespace naive_bayes
             this.dg_datos.ReadOnly = true;
             this.dg_datos.RowHeadersWidth = 51;
             this.dg_datos.RowTemplate.Height = 24;
-            this.dg_datos.Size = new System.Drawing.Size(847, 530);
+            this.dg_datos.Size = new System.Drawing.Size(850, 269);
             this.dg_datos.TabIndex = 11;
             // 
             // groupBox2
@@ -334,12 +342,102 @@ namespace naive_bayes
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Contiene encabezados?";
             // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(724, 694);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(87, 24);
+            this.materialLabel6.TabIndex = 13;
+            this.materialLabel6.Text = "Accuracy";
+            // 
+            // txt_accuracy
+            // 
+            this.txt_accuracy.Depth = 0;
+            this.txt_accuracy.Enabled = false;
+            this.txt_accuracy.Hint = "";
+            this.txt_accuracy.Location = new System.Drawing.Point(827, 694);
+            this.txt_accuracy.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txt_accuracy.Name = "txt_accuracy";
+            this.txt_accuracy.PasswordChar = '\0';
+            this.txt_accuracy.SelectedText = "";
+            this.txt_accuracy.SelectionLength = 0;
+            this.txt_accuracy.SelectionStart = 0;
+            this.txt_accuracy.Size = new System.Drawing.Size(76, 28);
+            this.txt_accuracy.TabIndex = 14;
+            this.txt_accuracy.UseSystemPasswordChar = false;
+            // 
+            // dg_metricas_evaluacion
+            // 
+            this.dg_metricas_evaluacion.AllowUserToAddRows = false;
+            this.dg_metricas_evaluacion.AllowUserToDeleteRows = false;
+            this.dg_metricas_evaluacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_metricas_evaluacion.Location = new System.Drawing.Point(728, 395);
+            this.dg_metricas_evaluacion.Name = "dg_metricas_evaluacion";
+            this.dg_metricas_evaluacion.ReadOnly = true;
+            this.dg_metricas_evaluacion.RowHeadersWidth = 51;
+            this.dg_metricas_evaluacion.RowTemplate.Height = 24;
+            this.dg_metricas_evaluacion.Size = new System.Drawing.Size(422, 252);
+            this.dg_metricas_evaluacion.TabIndex = 15;
+            // 
+            // dg_matriz_confusion
+            // 
+            this.dg_matriz_confusion.AllowUserToAddRows = false;
+            this.dg_matriz_confusion.AllowUserToDeleteRows = false;
+            this.dg_matriz_confusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_matriz_confusion.Location = new System.Drawing.Point(1156, 395);
+            this.dg_matriz_confusion.Name = "dg_matriz_confusion";
+            this.dg_matriz_confusion.ReadOnly = true;
+            this.dg_matriz_confusion.RowHeadersWidth = 51;
+            this.dg_matriz_confusion.RowTemplate.Height = 24;
+            this.dg_matriz_confusion.Size = new System.Drawing.Size(422, 252);
+            this.dg_matriz_confusion.TabIndex = 16;
+            // 
+            // materialLabel7
+            // 
+            this.materialLabel7.AutoSize = true;
+            this.materialLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.Location = new System.Drawing.Point(846, 650);
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            this.materialLabel7.Size = new System.Drawing.Size(205, 24);
+            this.materialLabel7.TabIndex = 17;
+            this.materialLabel7.Text = "Metricas de evaluación";
+            // 
+            // materialLabel8
+            // 
+            this.materialLabel8.AutoSize = true;
+            this.materialLabel8.BackColor = System.Drawing.Color.Transparent;
+            this.materialLabel8.Depth = 0;
+            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel8.Location = new System.Drawing.Point(1263, 650);
+            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel8.Name = "materialLabel8";
+            this.materialLabel8.Size = new System.Drawing.Size(178, 24);
+            this.materialLabel8.TabIndex = 18;
+            this.materialLabel8.Text = "Matriz de confusión";
+            // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1614, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.materialLabel8);
+            this.Controls.Add(this.materialLabel7);
+            this.Controls.Add(this.dg_matriz_confusion);
+            this.Controls.Add(this.dg_metricas_evaluacion);
+            this.Controls.Add(this.txt_accuracy);
+            this.Controls.Add(this.materialLabel6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dg_datos);
             this.Controls.Add(this.btn_analisis);
@@ -359,6 +457,8 @@ namespace naive_bayes
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_metricas_evaluacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_matriz_confusion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,6 +485,12 @@ namespace naive_bayes
         private MaterialSkin.Controls.MaterialRadioButton rb_si;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txt_accuracy;
+        private System.Windows.Forms.DataGridView dg_metricas_evaluacion;
+        private System.Windows.Forms.DataGridView dg_matriz_confusion;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private MaterialSkin.Controls.MaterialLabel materialLabel8;
     }
 }
 

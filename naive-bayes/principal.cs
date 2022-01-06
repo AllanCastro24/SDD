@@ -232,15 +232,7 @@ namespace naive_bayes
                 var cols = line.Split(',');
                 columnas = cols.Count();
             }
-            if (cb_mismo_dataset.Checked && txt_poracentaje_entrenamiento.Text != "")
-            {
-                return (int.Parse(txt_poracentaje_entrenamiento.Text)*columnas) /100;
-            }
-            else
-            {
-                return columnas;
-            }
-            
+            return columnas;
         }
 
         private void rb_si_CheckedChanged(object sender, EventArgs e)
@@ -274,7 +266,7 @@ namespace naive_bayes
                 else
                 {
                     //Comienza el programa
-                    ConvertToDataTablePruebas(txt_ruta_dataset.Text, total_columnas(txt_ruta_dataset.Text));
+
                 }
             }
         }
@@ -286,48 +278,6 @@ namespace naive_bayes
                 MessageBox.Show("No se permite más del 100%", "Mensaje del sistema");
                 txt_poracentaje_entrenamiento.Text = "";
             }
-        }
-
-        public DataTable ConvertToDataTablePruebas(String ruta, int columnas)
-        {
-            int contador = 0;
-            DataTable tbl = new DataTable();
-            //Se crea variable llamada: lector, para abrir el archivo csv donde están almacenadas los datos de los alumnos.
-            var lector = new StreamReader(File.OpenRead(@ruta));
-            //En el ciclo while, recorre todas las lineas del archivo
-            while (!lector.EndOfStream)
-            {
-                contador = contador + 1;
-                //Guarda el contenido de cada linea
-                var line = lector.ReadLine();
-                //Nombre de empresa, edad, tiempo y correo
-                var cols = line.Split(',');
-                if (contador == 1)
-                {
-                    if (rb_si.Checked)
-                    {
-                        for (int col = 0; col < columnas; col++)
-                            tbl.Columns.Add(new DataColumn(cols[col]));
-
-                        continue;
-                    }
-                    else
-                    {
-                        for (int col = 0; col < columnas; col++)
-                            tbl.Columns.Add(new DataColumn("Columna " + (col + 1).ToString()));
-                    }
-
-                }
-                DataRow dr = tbl.NewRow();
-                for (int cIndex = 0; cIndex < columnas; cIndex++)
-                {
-                    dr[cIndex] = cols[cIndex];
-                }
-
-                tbl.Rows.Add(dr);
-            }
-
-            return tbl;
         }
     }
 }
