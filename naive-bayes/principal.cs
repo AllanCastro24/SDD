@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using NaiveBayes;
 
 namespace naive_bayes
 {
@@ -390,7 +391,10 @@ namespace naive_bayes
 
         public void NaiveBayes()
         {
-
+            //Este código se va a correr por cada clase para obtener valor y generar matrices correspondientes
+            //var classify = new Classifier(data);
+            //var result = classify.Probability("Rouge", test);
+            
         }
     }
 }
