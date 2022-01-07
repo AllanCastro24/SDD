@@ -55,11 +55,16 @@ namespace naive_bayes
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rb_final = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rb_inicio = new MaterialSkin.Controls.MaterialRadioButton();
+            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_metricas_evaluacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_matriz_confusion)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_salir
@@ -127,7 +132,7 @@ namespace naive_bayes
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(6, 18);
+            this.materialLabel2.Location = new System.Drawing.Point(15, 23);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(84, 24);
@@ -142,16 +147,16 @@ namespace naive_bayes
             this.groupBox1.Controls.Add(this.txt_poracentaje_entrenamiento);
             this.groupBox1.Controls.Add(this.rb_validacion_simple);
             this.groupBox1.Controls.Add(this.materialLabel2);
-            this.groupBox1.Location = new System.Drawing.Point(39, 377);
+            this.groupBox1.Location = new System.Drawing.Point(39, 395);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(635, 270);
+            this.groupBox1.Size = new System.Drawing.Size(635, 252);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
             // materialRaisedButton1
             // 
             this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(390, 192);
+            this.materialRaisedButton1.Location = new System.Drawing.Point(399, 188);
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
@@ -166,7 +171,7 @@ namespace naive_bayes
             this.cb_mismo_dataset.AutoSize = true;
             this.cb_mismo_dataset.Depth = 0;
             this.cb_mismo_dataset.Font = new System.Drawing.Font("Roboto", 10F);
-            this.cb_mismo_dataset.Location = new System.Drawing.Point(63, 63);
+            this.cb_mismo_dataset.Location = new System.Drawing.Point(72, 59);
             this.cb_mismo_dataset.Margin = new System.Windows.Forms.Padding(0);
             this.cb_mismo_dataset.MouseLocation = new System.Drawing.Point(-1, -1);
             this.cb_mismo_dataset.MouseState = MaterialSkin.MouseState.HOVER;
@@ -184,7 +189,7 @@ namespace naive_bayes
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(204, 138);
+            this.materialLabel3.Location = new System.Drawing.Point(213, 134);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(252, 24);
@@ -195,7 +200,7 @@ namespace naive_bayes
             // 
             this.txt_poracentaje_entrenamiento.Depth = 0;
             this.txt_poracentaje_entrenamiento.Hint = "";
-            this.txt_poracentaje_entrenamiento.Location = new System.Drawing.Point(488, 138);
+            this.txt_poracentaje_entrenamiento.Location = new System.Drawing.Point(497, 134);
             this.txt_poracentaje_entrenamiento.MouseState = MaterialSkin.MouseState.HOVER;
             this.txt_poracentaje_entrenamiento.Name = "txt_poracentaje_entrenamiento";
             this.txt_poracentaje_entrenamiento.PasswordChar = '\0';
@@ -213,7 +218,7 @@ namespace naive_bayes
             this.rb_validacion_simple.AutoSize = true;
             this.rb_validacion_simple.Depth = 0;
             this.rb_validacion_simple.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb_validacion_simple.Location = new System.Drawing.Point(115, 102);
+            this.rb_validacion_simple.Location = new System.Drawing.Point(124, 98);
             this.rb_validacion_simple.Margin = new System.Windows.Forms.Padding(0);
             this.rb_validacion_simple.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb_validacion_simple.MouseState = MaterialSkin.MouseState.HOVER;
@@ -287,9 +292,9 @@ namespace naive_bayes
             this.groupBox2.Controls.Add(this.rb_no);
             this.groupBox2.Controls.Add(this.rb_si);
             this.groupBox2.Controls.Add(this.materialLabel4);
-            this.groupBox2.Location = new System.Drawing.Point(39, 174);
+            this.groupBox2.Location = new System.Drawing.Point(39, 151);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(635, 163);
+            this.groupBox2.Size = new System.Drawing.Size(635, 101);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             // 
@@ -298,7 +303,7 @@ namespace naive_bayes
             this.rb_no.AutoSize = true;
             this.rb_no.Depth = 0;
             this.rb_no.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb_no.Location = new System.Drawing.Point(349, 83);
+            this.rb_no.Location = new System.Drawing.Point(349, 57);
             this.rb_no.Margin = new System.Windows.Forms.Padding(0);
             this.rb_no.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb_no.MouseState = MaterialSkin.MouseState.HOVER;
@@ -316,7 +321,7 @@ namespace naive_bayes
             this.rb_si.AutoSize = true;
             this.rb_si.Depth = 0;
             this.rb_si.Font = new System.Drawing.Font("Roboto", 10F);
-            this.rb_si.Location = new System.Drawing.Point(34, 83);
+            this.rb_si.Location = new System.Drawing.Point(34, 57);
             this.rb_si.Margin = new System.Windows.Forms.Padding(0);
             this.rb_si.MouseLocation = new System.Drawing.Point(-1, -1);
             this.rb_si.MouseState = MaterialSkin.MouseState.HOVER;
@@ -336,7 +341,7 @@ namespace naive_bayes
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(26, 28);
+            this.materialLabel4.Location = new System.Drawing.Point(26, 21);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(210, 24);
@@ -441,12 +446,72 @@ namespace naive_bayes
             this.materialLabel9.TabIndex = 19;
             this.materialLabel9.Text = "Dataset";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rb_final);
+            this.groupBox3.Controls.Add(this.rb_inicio);
+            this.groupBox3.Controls.Add(this.materialLabel10);
+            this.groupBox3.Location = new System.Drawing.Point(39, 274);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(635, 101);
+            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabStop = false;
+            // 
+            // rb_final
+            // 
+            this.rb_final.AutoSize = true;
+            this.rb_final.Depth = 0;
+            this.rb_final.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rb_final.Location = new System.Drawing.Point(349, 56);
+            this.rb_final.Margin = new System.Windows.Forms.Padding(0);
+            this.rb_final.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rb_final.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rb_final.Name = "rb_final";
+            this.rb_final.Ripple = true;
+            this.rb_final.Size = new System.Drawing.Size(71, 30);
+            this.rb_final.TabIndex = 2;
+            this.rb_final.TabStop = true;
+            this.rb_final.Text = "Final";
+            this.rb_final.UseVisualStyleBackColor = true;
+            // 
+            // rb_inicio
+            // 
+            this.rb_inicio.AutoSize = true;
+            this.rb_inicio.Depth = 0;
+            this.rb_inicio.Font = new System.Drawing.Font("Roboto", 10F);
+            this.rb_inicio.Location = new System.Drawing.Point(34, 56);
+            this.rb_inicio.Margin = new System.Windows.Forms.Padding(0);
+            this.rb_inicio.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.rb_inicio.MouseState = MaterialSkin.MouseState.HOVER;
+            this.rb_inicio.Name = "rb_inicio";
+            this.rb_inicio.Ripple = true;
+            this.rb_inicio.Size = new System.Drawing.Size(76, 30);
+            this.rb_inicio.TabIndex = 1;
+            this.rb_inicio.TabStop = true;
+            this.rb_inicio.Text = "Inicio";
+            this.rb_inicio.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.rb_inicio.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel10
+            // 
+            this.materialLabel10.AutoSize = true;
+            this.materialLabel10.Depth = 0;
+            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel10.Location = new System.Drawing.Point(26, 21);
+            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel10.Name = "materialLabel10";
+            this.materialLabel10.Size = new System.Drawing.Size(211, 30);
+            this.materialLabel10.TabIndex = 0;
+            this.materialLabel10.Text = "Posición de clase?";
+            // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1614, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
             this.Controls.Add(this.materialLabel7);
@@ -475,6 +540,8 @@ namespace naive_bayes
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_metricas_evaluacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_matriz_confusion)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -508,6 +575,10 @@ namespace naive_bayes
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private MaterialSkin.Controls.MaterialRadioButton rb_final;
+        private MaterialSkin.Controls.MaterialRadioButton rb_inicio;
+        private MaterialSkin.Controls.MaterialLabel materialLabel10;
     }
 }
 

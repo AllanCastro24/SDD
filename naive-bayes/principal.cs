@@ -91,9 +91,9 @@ namespace naive_bayes
             }
             else
             {
-                if (txt_intervalo_discretizacion.Text == "")
+                if (txt_intervalo_discretizacion.Text == "" || (rb_inicio.Checked == false && rb_final.Checked == false))
                 {
-                    MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
+                    MessageBox.Show("Aun faltan configuraciones", "Mensaje del sistema");
                 }
                 else
                 {
@@ -111,8 +111,9 @@ namespace naive_bayes
                         }
                     }
 
-                    MessageBox.Show(dg_datos.Rows.Count.ToString(), "Mensaje del sistema");
-                    dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
+                    //MessageBox.Show("Se exportó correctamente", "Mensaje del sistema");
+                    //*******Metricas de evaluación*******
+                    //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
                 }
             }
         }
@@ -280,8 +281,39 @@ namespace naive_bayes
                 }
                 else
                 {
+                    int contador = 0;
+                    int porc = (Int16.Parse(txt_poracentaje_entrenamiento.Text)* dg_datos.Rows.Count) / 100;
+                    //MessageBox.Show(porc.ToString(), "Mensaje del sistema");
+                    //MessageBox.Show(dg_datos.Rows.Count.ToString(), "Mensaje del sistema");
                     //Comienza el programa
+                    //Exportar a una matriz
+                    String[,] conjunto = new String[porc, dg_datos.Columns.Count];
 
+                    foreach (DataGridViewRow row in dg_datos.Rows)
+                    {
+                        contador = contador + 1;
+                        if (!row.IsNewRow)
+                        {
+                            foreach (DataGridViewCell cel in row.Cells)
+                            {
+                                if (contador == porc)
+                                {
+                                    conjunto[cel.RowIndex, cel.ColumnIndex] = cel.Value.ToString();
+                                    goto Lleno;
+                                }
+                                else
+                                {
+                                    conjunto[cel.RowIndex, cel.ColumnIndex] = cel.Value.ToString();
+                                }
+                            }
+                        }
+                        contador = contador + 1;
+                    }
+                Lleno:
+                    MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
+                    //MessageBox.Show("Se exportó correctamente", "Mensaje del sistema");
+                    //*******Metricas de evaluación*******
+                    dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, porc);
                 }
             }
         }

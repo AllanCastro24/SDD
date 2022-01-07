@@ -10,3 +10,4 @@ C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.Cor
 C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.csproj.CopyComplete
 C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.exe
 C:\Users\acast\Documents\GitHub\SDD\naive-bayes\obj\Debug\naive-bayes.pdb
+C:\Users\acast\Documents\GitHub\SDD\naive-bayes\bin\Debug\NaiveBayes.dll
