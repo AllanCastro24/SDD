@@ -97,8 +97,17 @@ namespace naive_bayes
                 }
                 else
                 {
+                    if (rb_inicio.Checked)
+                    {
+                        int clase = 0;
+                    }
+                    else
+                    {
+                        int clase = dg_datos.Rows.Count - 1;
+                    }
                     //Exportar a una matriz
                     String[,] conjunto = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
+                    String[,] NaiveBayes = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
 
                     foreach (DataGridViewRow row in dg_datos.Rows)
                     {
@@ -275,7 +284,7 @@ namespace naive_bayes
             }
             else
             {
-                if (txt_intervalo_discretizacion.Text == "")
+                if (txt_intervalo_discretizacion.Text == "" || (rb_inicio.Checked == false && rb_final.Checked == false))
                 {
                     MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
                 }
@@ -288,7 +297,16 @@ namespace naive_bayes
                     //Comienza el programa
                     //Exportar a una matriz
                     String[,] conjunto = new String[porc, dg_datos.Columns.Count];
+                    String[,] NaiveBayesPruebas = new String[porc, dg_datos.Columns.Count];
 
+                    if (rb_inicio.Checked)
+                    {
+                        int clase = 0;
+                    }
+                    else
+                    {
+                        int clase = porc - 1;
+                    }
                     foreach (DataGridViewRow row in dg_datos.Rows)
                     {
                         contador = contador + 1;
