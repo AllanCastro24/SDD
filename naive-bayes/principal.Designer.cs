@@ -70,7 +70,7 @@ namespace naive_bayes
             // btn_salir
             // 
             this.btn_salir.Depth = 0;
-            this.btn_salir.Location = new System.Drawing.Point(1576, 28);
+            this.btn_salir.Location = new System.Drawing.Point(1507, 35);
             this.btn_salir.MouseState = MaterialSkin.MouseState.HOVER;
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Primary = true;
@@ -279,7 +279,7 @@ namespace naive_bayes
             this.dg_datos.AllowUserToAddRows = false;
             this.dg_datos.AllowUserToDeleteRows = false;
             this.dg_datos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_datos.Location = new System.Drawing.Point(728, 117);
+            this.dg_datos.Location = new System.Drawing.Point(699, 117);
             this.dg_datos.Name = "dg_datos";
             this.dg_datos.ReadOnly = true;
             this.dg_datos.RowHeadersWidth = 51;
@@ -355,7 +355,7 @@ namespace naive_bayes
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(724, 694);
+            this.materialLabel6.Location = new System.Drawing.Point(695, 694);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(87, 24);
@@ -367,7 +367,7 @@ namespace naive_bayes
             this.txt_accuracy.Depth = 0;
             this.txt_accuracy.Enabled = false;
             this.txt_accuracy.Hint = "";
-            this.txt_accuracy.Location = new System.Drawing.Point(827, 694);
+            this.txt_accuracy.Location = new System.Drawing.Point(798, 694);
             this.txt_accuracy.MouseState = MaterialSkin.MouseState.HOVER;
             this.txt_accuracy.Name = "txt_accuracy";
             this.txt_accuracy.PasswordChar = '\0';
@@ -383,7 +383,7 @@ namespace naive_bayes
             this.dg_metricas_evaluacion.AllowUserToAddRows = false;
             this.dg_metricas_evaluacion.AllowUserToDeleteRows = false;
             this.dg_metricas_evaluacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_metricas_evaluacion.Location = new System.Drawing.Point(728, 395);
+            this.dg_metricas_evaluacion.Location = new System.Drawing.Point(699, 395);
             this.dg_metricas_evaluacion.Name = "dg_metricas_evaluacion";
             this.dg_metricas_evaluacion.ReadOnly = true;
             this.dg_metricas_evaluacion.RowHeadersWidth = 51;
@@ -396,7 +396,7 @@ namespace naive_bayes
             this.dg_matriz_confusion.AllowUserToAddRows = false;
             this.dg_matriz_confusion.AllowUserToDeleteRows = false;
             this.dg_matriz_confusion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_matriz_confusion.Location = new System.Drawing.Point(1156, 395);
+            this.dg_matriz_confusion.Location = new System.Drawing.Point(1127, 395);
             this.dg_matriz_confusion.Name = "dg_matriz_confusion";
             this.dg_matriz_confusion.ReadOnly = true;
             this.dg_matriz_confusion.RowHeadersWidth = 51;
@@ -411,7 +411,7 @@ namespace naive_bayes
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(846, 650);
+            this.materialLabel7.Location = new System.Drawing.Point(817, 650);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(205, 24);
@@ -425,7 +425,7 @@ namespace naive_bayes
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(1263, 650);
+            this.materialLabel8.Location = new System.Drawing.Point(1234, 650);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(178, 24);
@@ -439,7 +439,7 @@ namespace naive_bayes
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(1111, 84);
+            this.materialLabel9.Location = new System.Drawing.Point(1082, 84);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Size = new System.Drawing.Size(74, 24);
@@ -509,7 +509,7 @@ namespace naive_bayes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1614, 763);
+            this.ClientSize = new System.Drawing.Size(1570, 763);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.materialLabel9);

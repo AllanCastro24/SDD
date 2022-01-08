@@ -34,31 +34,39 @@ namespace naive_bayes
 
         private void btn_cargar_dataset_Click(object sender, EventArgs e)
         {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            if (txt_ruta_dataset.Text != "")
             {
-                openFileDialog.InitialDirectory = "c:\\archivo";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
+                Application.Restart();
+            }
+            else
+            {
+                var fileContent = string.Empty;
+                var filePath = string.Empty;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
-                    //Almacenar la ruta de un archivo especifico
-                    filePath = openFileDialog.FileName;
+                    openFileDialog.InitialDirectory = "c:\\archivo";
+                    openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = true;
 
-                    //Leer el contenido del documento con un stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
-                        fileContent = reader.ReadToEnd();
+                        //Almacenar la ruta de un archivo especifico
+                        filePath = openFileDialog.FileName;
+
+                        //Leer el contenido del documento con un stream
+                        var fileStream = openFileDialog.OpenFile();
+
+                        using (StreamReader reader = new StreamReader(fileStream))
+                        {
+                            fileContent = reader.ReadToEnd();
+                        }
                     }
                 }
+                txt_ruta_dataset.Text = filePath;
             }
-            txt_ruta_dataset.Text = filePath;
+            
         }
 
         private void cb_mismo_dataset_CheckedChanged(object sender, EventArgs e)
@@ -106,10 +114,11 @@ namespace naive_bayes
                     {
                         int clase = dg_datos.Rows.Count - 1;
                     }
-                    //Exportar a una matriz
+                    //Matriz inicial
                     String[,] conjunto = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
+                    //Esta matriz es donde se va a poner la matriz final
                     String[,] NaiveBayes = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
-
+                    //Aqui se exporta el dataset a la matriz inicial
                     foreach (DataGridViewRow row in dg_datos.Rows)
                     {
                         if (!row.IsNewRow)
@@ -120,10 +129,16 @@ namespace naive_bayes
                             }
                         }
                     }
-
+                    //Empieza el calculo de matriz final (Proceso de discretización)
+                    int[] vector = new int [dg_datos.Rows.Count];
+                    
+                    FrecuenciasIguales(vector);
                     //MessageBox.Show("Se exportó correctamente", "Mensaje del sistema");
                     //*******Metricas de evaluación*******
                     //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
+
+                    //Al final calcular accuacy
+                    CalcularAccuracy();
                 }
             }
         }
@@ -377,11 +392,15 @@ namespace naive_bayes
             return tbl;
         }
 
-        public DataTable MatrizConfusion(int columnas, String[,] conjunto, int rows)
+        public DataTable MatrizConfusion()
         {
             DataTable tbl = new DataTable();
 
             return tbl;
+        }
+        public void calcular_numero_clases()
+        {
+
         }
 
         public void discretizar()
@@ -392,9 +411,79 @@ namespace naive_bayes
         public void NaiveBayes()
         {
             //Este código se va a correr por cada clase para obtener valor y generar matrices correspondientes
+            //recibe los datos en forma de lista y recibe una clase a evaluar y devuelve el valor numerico de su probabilidad
             //var classify = new Classifier(data);
             //var result = classify.Probability("Rouge", test);
             
+        }
+        public void FrecuenciasIguales(int [] arreglo_a_discretizar)
+        {
+            //Metodo de discretización
+            int intervaloDiscretizacion = Int16.Parse(txt_intervalo_discretizacion.Text);
+            int[] grupos = new int[arreglo_a_discretizar.Length];
+            //Paso 1 ordenarlos
+            int t;
+            for (int a = 1; a < arreglo_a_discretizar.Length; a++)
+                for (int b = arreglo_a_discretizar.Length - 1; b >= a; b--)
+                {
+                    if (arreglo_a_discretizar[b - 1] > arreglo_a_discretizar[b])
+                    {
+                        t = arreglo_a_discretizar[b - 1];
+                        arreglo_a_discretizar[b - 1] = arreglo_a_discretizar[b];
+                        arreglo_a_discretizar[b] = t;
+                    }
+            }
+            //Calcular cuantos elementos habrá por grupo
+            int intervalos = arreglo_a_discretizar.Length / intervaloDiscretizacion;
+            //asignar grupos
+            for (int i = 0; i< arreglo_a_discretizar.Length;i++)
+            {
+                if (i < intervalos)
+                {
+                    
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        public void CalcularAccuracy()
+        {
+            int tp = AcumularTruePositives();
+            int tn = AcumularTrueNegatives();
+            int fp = AcumularFalsePositive();
+            int fn = AcumularFalseNegative();
+            //Primero acumular los true positives los true positives
+            txt_accuracy.Text = (tp + tn / tp + tn + fp + fn).ToString();
+        }
+
+        public int AcumularTruePositives()
+        {
+            int truepositive = 0;
+            //acá se acumulan los true positives
+            return truepositive;
+        }
+
+        public int AcumularTrueNegatives()
+        {
+            int truenegative = 0;
+            //acá se acumulan los true positives
+            return truenegative;
+        }
+
+        public int AcumularFalsePositive()
+        {
+            int falsepositive = 0;
+            //acá se acumulan los true positives
+            return falsepositive;
+        }
+        public int AcumularFalseNegative()
+        {
+            int falsenegative = 0;
+            //acá se acumulan los true positives
+            return falsenegative;
         }
     }
 }
