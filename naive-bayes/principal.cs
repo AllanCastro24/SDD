@@ -137,9 +137,9 @@ namespace naive_bayes
                     //FrecuenciasIguales(vector);
 
                     //*******Matriz de confusión*******
-                    MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
+                    dg_metricas_evaluacion.DataSource = MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
                     //*******Metricas de evaluación*******
-                    //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
+                    //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(4, conjunto, dg_datos.Rows.Count);
 
                     //Al final calcular accuacy
                     //CalcularAccuracy();
@@ -369,7 +369,7 @@ namespace naive_bayes
         {
             int contador = 0;
             DataTable tbl = new DataTable();
-            String[] encabezado = new string[5];
+            String[] encabezado = new string[4];
             encabezado[0] = "Categoría";
             encabezado[1] = "Precision";
             double precision = 0;
@@ -377,7 +377,6 @@ namespace naive_bayes
             double exhaustividad = 0;
             encabezado[3] = "F1";
             double f1 = 0;
-            encabezado[4] = "Soporte";
 
             //True positive, true negative, false positive y false negative
             int tp = AcumularTruePositives();
@@ -417,13 +416,38 @@ namespace naive_bayes
 
         public DataTable MatrizConfusion(String[,] matrizOriginal, int clase, int rows)
         {
+            int contador_clases = 0;
+            int contador = 0;
             //Primero obtener numero de clases diferentes y el vector con los encabezados
             for (int i = 0; i < rows;i++)
             {
                 
             }
+            String[] clases = new string[contador_clases];
+            //El +1 es para incluir columna encabezados
+            String[,] matriz_confusion = new string [contador_clases + 1, contador_clases + 1];
             //Calculo de matriz de consufión
             DataTable tbl = new DataTable();
+
+            //Columnas
+            for (int col = 0; col < contador_clases; col++)
+                tbl.Columns.Add(new DataColumn(clases[col]));
+
+            while (!(contador == contador_clases))
+            {
+                //Registros
+                DataRow dr = tbl.NewRow();
+                for (int cIndex = 0; cIndex < contador_clases; cIndex++)
+                {
+                    for (int rIndex = 0; rIndex < contador_clases; rIndex++)
+                    {
+                        dr[cIndex] = matriz_confusion[rIndex, cIndex];
+                    }
+                }
+
+                tbl.Rows.Add(dr);
+                contador = contador + 1;
+            }
 
             return tbl;
         }
