@@ -368,14 +368,31 @@ namespace naive_bayes
             String[] encabezado = new string[5];
             encabezado[0] = "Categoría";
             encabezado[1] = "Precision";
+            double precision = 0;
             encabezado[2] = "Exhaustividad";
+            double exhaustividad = 0;
             encabezado[3] = "F1";
+            double f1 = 0;
             encabezado[4] = "Soporte";
+
+            //True positive, true negative, false positive y false negative
+            int tp = AcumularTruePositives();
+            int tn = AcumularTrueNegatives();
+            int fp = AcumularFalsePositive();
+            int fn = AcumularFalseNegative();
+
+            //Calculos (Estos calculos se harán por clase
+            //Precision:
+            precision = tp / tp + fp;
+            //Exhaustividad o Recall
+            exhaustividad = tp / tp + fn;
+            //F1
+            f1 = 2 * (precision * exhaustividad / precision + exhaustividad);
+
             //Columnas
             for (int col = 0; col < columnas; col++)
                 tbl.Columns.Add(new DataColumn(encabezado[col]));
 
-            //En el ciclo while, recorre todas las lineas del archivo
             while (!(contador == rows))
             {
                 //Registros
@@ -388,6 +405,8 @@ namespace naive_bayes
                 tbl.Rows.Add(dr);
                 contador = contador + 1;
             }
+
+            
 
             return tbl;
         }
