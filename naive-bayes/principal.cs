@@ -106,13 +106,14 @@ namespace naive_bayes
                 }
                 else
                 {
+                    int clase;
                     if (rb_inicio.Checked)
                     {
-                        int clase = 0;
+                        clase = 0;
                     }
                     else
                     {
-                        int clase = dg_datos.Rows.Count - 1;
+                        clase = dg_datos.Rows.Count - 1;
                     }
                     //Matriz inicial
                     String[,] conjunto = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
@@ -131,14 +132,17 @@ namespace naive_bayes
                     }
                     //Empieza el calculo de matriz final (Proceso de discretización)
                     int[] vector = new int [dg_datos.Rows.Count];
-                    
-                    FrecuenciasIguales(vector);
-                    //MessageBox.Show("Se exportó correctamente", "Mensaje del sistema");
+
+                    //Discretización
+                    //FrecuenciasIguales(vector);
+
+                    //*******Matriz de confusión*******
+                    MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
                     //*******Metricas de evaluación*******
                     //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, dg_datos.Rows.Count);
 
                     //Al final calcular accuacy
-                    CalcularAccuracy();
+                    //CalcularAccuracy();
                 }
             }
         }
@@ -411,15 +415,17 @@ namespace naive_bayes
             return tbl;
         }
 
-        public DataTable MatrizConfusion()
+        public DataTable MatrizConfusion(String[,] matrizOriginal, int clase, int rows)
         {
+            //Primero obtener numero de clases diferentes y el vector con los encabezados
+            for (int i = 0; i < rows;i++)
+            {
+                
+            }
+            //Calculo de matriz de consufión
             DataTable tbl = new DataTable();
 
             return tbl;
-        }
-        public void calcular_numero_clases()
-        {
-
         }
 
         public void discretizar()
