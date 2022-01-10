@@ -131,13 +131,36 @@ namespace naive_bayes
                         }
                     }
                     //Empieza el calculo de matriz final (Proceso de discretización)
-                    int[] vector = new int [dg_datos.Rows.Count];
-
+                    decimal[] vector = new decimal [dg_datos.Rows.Count];
+                    String[] vector_discretizado = new String[dg_datos.Rows.Count];
+                    decimal valor = 0;
+                    bool discretizar = false;
                     //Discretización
-                    //FrecuenciasIguales(vector);
-
+                    for (int columna = 0; columna < dg_datos.Columns.Count; columna++)
+                    {
+                        discretizar = decimal.TryParse(conjunto[0, columna], out valor);
+                        if (discretizar == true)
+                        {
+                            //Si entra es por que es un valor numerico, entonces llenas el vector y lo mandas a discretizar
+                            for (int registro = 0; registro < dg_datos.Rows.Count; registro++)
+                            {
+                                vector[registro] = decimal.Parse(conjunto[registro, columna]);
+                            }
+                            //Frecuencias iguales mejor hacerlo en la misma función
+                            // FrecuenciasIguales(vector, dg_datos.Rows.Count);
+                        }
+                        else
+                        {
+                            for (int registro = 0; registro < dg_datos.Rows.Count; registro++)
+                            {
+                                NaiveBayes[registro, columna] = conjunto[registro, columna];
+                            }
+                        }
+                    }
+                    
+                    //Al llegar acá comenzamos a utilizar la matriz naive bayes que en teoría es la matriz final
                     //*******Matriz de confusión*******
-                    dg_metricas_evaluacion.DataSource = MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
+                    //dg_metricas_evaluacion.DataSource = MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
                     //*******Metricas de evaluación*******
                     //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(4, conjunto, dg_datos.Rows.Count);
 
@@ -351,7 +374,7 @@ namespace naive_bayes
                     MessageBox.Show("Ingrese intervalo de discretización", "Mensaje del sistema");
                     //MessageBox.Show("Se exportó correctamente", "Mensaje del sistema");
                     //*******Metricas de evaluación*******
-                    dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, porc);
+                    //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(5, conjunto, porc);
                 }
             }
         }
@@ -452,11 +475,6 @@ namespace naive_bayes
             return tbl;
         }
 
-        public void discretizar()
-        {
-
-        }
-
         public void NaiveBayes()
         {
             //Este código se va a correr por cada clase para obtener valor y generar matrices correspondientes
@@ -465,13 +483,14 @@ namespace naive_bayes
             //var result = classify.Probability("Rouge", test);
             
         }
-        public void FrecuenciasIguales(int [] arreglo_a_discretizar)
+        public String FrecuenciasIguales(decimal [] arreglo_a_discretizar, int elementos)
         {
             //Metodo de discretización
             int intervaloDiscretizacion = Int16.Parse(txt_intervalo_discretizacion.Text);
             int[] grupos = new int[arreglo_a_discretizar.Length];
+            int rango = 0;
             //Paso 1 ordenarlos
-            int t;
+            decimal t;
             for (int a = 1; a < arreglo_a_discretizar.Length; a++)
                 for (int b = arreglo_a_discretizar.Length - 1; b >= a; b--)
                 {
@@ -496,6 +515,8 @@ namespace naive_bayes
 
                 }
             }
+
+            return "";
         }
 
         public void CalcularAccuracy()
