@@ -107,13 +107,19 @@ namespace naive_bayes
                 else
                 {
                     int clase;
+                    int indice_i = 0;
+                    int indice_fin = 0;
                     if (rb_inicio.Checked)
                     {
                         clase = 0;
+                        indice_i = 1;
+                        indice_fin = dg_datos.Columns.Count;
                     }
                     else
                     {
-                        clase = dg_datos.Rows.Count - 1;
+                        clase = dg_datos.Columns.Count - 1;
+                        indice_i = 0;
+                        indice_fin = dg_datos.Columns.Count - 1;
                     }
                     //Matriz inicial
                     String[,] conjunto = new String[dg_datos.Rows.Count, dg_datos.Columns.Count];
@@ -132,11 +138,12 @@ namespace naive_bayes
                     }
                     //Empieza el calculo de matriz final (Proceso de discretización)
                     decimal[] vector = new decimal [dg_datos.Rows.Count];
-                    String[] vector_discretizado = new String[dg_datos.Rows.Count];
                     decimal valor = 0;
                     bool discretizar = false;
+                    int indice = 0;
+                    
                     //Discretización
-                    for (int columna = 0; columna < dg_datos.Columns.Count; columna++)
+                    for (int columna = indice_i; columna < indice_fin; columna++)
                     {
                         discretizar = decimal.TryParse(conjunto[0, columna], out valor);
                         if (discretizar == true)
@@ -146,8 +153,57 @@ namespace naive_bayes
                             {
                                 vector[registro] = decimal.Parse(conjunto[registro, columna]);
                             }
-                            //Frecuencias iguales mejor hacerlo en la misma función
-                            // FrecuenciasIguales(vector, dg_datos.Rows.Count);
+                            //*******Frecuencias iguales*******
+                            int intervaloDiscretizacion = Int16.Parse(txt_intervalo_discretizacion.Text); // En cuantos grupos lo voy a discretizar
+                            int contador_intervalos = 0;
+                            int[] grupos = new int[vector.Length];
+                            int rango = dg_datos.Rows.Count / intervaloDiscretizacion; //Cuantos elementos por grupo
+                            
+                            //Paso 1 ordenarlos
+                            decimal t;
+                            for (int a = 1; a < vector.Length; a++)
+                                for (int b = vector.Length - 1; b >= a; b--)
+                                {
+                                    if (vector[b - 1] > vector[b])
+                                    {
+                                        t = vector[b - 1];
+                                        vector[b - 1] = vector[b];
+                                        vector[b] = t;
+                                    }
+                                }
+
+                            //asignar grupos
+                            int intervalo = rango;
+                            for (int i = 0; i < vector.Length; i++)
+                            {
+                                if (contador_intervalos < rango)
+                                {
+                                    grupos[i] = intervalo;
+                                    contador_intervalos = contador_intervalos + 1;
+                                }
+                                else
+                                {
+                                    contador_intervalos = 0;
+                                    intervalo = intervalo - 1;
+
+                                    grupos[i] = intervalo;
+                                    contador_intervalos = contador_intervalos + 1;
+                                }
+
+                                if (intervalo == 0)
+                                {
+                                    goto continuar_aca;
+                                }
+                            }
+                            continuar_aca:
+                            //Remplazar valores
+                            for (int i = 0; i < vector.Length; i++)
+                            {
+                                indice = BusquedaBinaria(conjunto[i,columna].ToString(),vector,grupos);
+                                NaiveBayes[i, columna] = grupos[indice].ToString();
+                                //lb_pruebas.Items.Add("Discreto: " + NaiveBayes[i, columna].ToString() + "No discreto: " + conjunto[i, columna].ToString() + "\n");
+                            }
+                            
                         }
                         else
                         {
@@ -160,9 +216,9 @@ namespace naive_bayes
                     
                     //Al llegar acá comenzamos a utilizar la matriz naive bayes que en teoría es la matriz final
                     //*******Matriz de confusión*******
-                    //dg_metricas_evaluacion.DataSource = MatrizConfusion(conjunto, clase, dg_datos.Rows.Count);
+                    dg_matriz_confusion.DataSource = MatrizConfusion(NaiveBayes, clase, dg_datos.Rows.Count);
                     //*******Metricas de evaluación*******
-                    //dg_metricas_evaluacion.DataSource = MatrizEvaluacion(4, conjunto, dg_datos.Rows.Count);
+                    dg_metricas_evaluacion.DataSource = MatrizEvaluacion(4, conjunto, dg_datos.Rows.Count);
 
                     //Al final calcular accuacy
                     //CalcularAccuracy();
@@ -409,11 +465,11 @@ namespace naive_bayes
 
             //Calculos (Estos calculos se harán por clase
             //Precision:
-            precision = tp / tp + fp;
+            //precision = tp / tp + fp;
             //Exhaustividad o Recall
-            exhaustividad = tp / tp + fn;
+            //exhaustividad = tp / tp + fn;
             //F1
-            f1 = 2 * (precision * exhaustividad / precision + exhaustividad);
+            //f1 = 2 * (precision * exhaustividad / precision + exhaustividad);
 
             //Columnas
             for (int col = 0; col < columnas; col++)
@@ -432,8 +488,6 @@ namespace naive_bayes
                 contador = contador + 1;
             }
 
-            
-
             return tbl;
         }
 
@@ -441,6 +495,8 @@ namespace naive_bayes
         {
             int contador_clases = 0;
             int contador = 0;
+            MessageBox.Show(clase.ToString());
+            MessageBox.Show(rows.ToString());
             //Primero obtener numero de clases diferentes y el vector con los encabezados
             for (int i = 0; i < rows;i++)
             {
@@ -483,41 +539,6 @@ namespace naive_bayes
             //var result = classify.Probability("Rouge", test);
             
         }
-        public String FrecuenciasIguales(decimal [] arreglo_a_discretizar, int elementos)
-        {
-            //Metodo de discretización
-            int intervaloDiscretizacion = Int16.Parse(txt_intervalo_discretizacion.Text);
-            int[] grupos = new int[arreglo_a_discretizar.Length];
-            int rango = 0;
-            //Paso 1 ordenarlos
-            decimal t;
-            for (int a = 1; a < arreglo_a_discretizar.Length; a++)
-                for (int b = arreglo_a_discretizar.Length - 1; b >= a; b--)
-                {
-                    if (arreglo_a_discretizar[b - 1] > arreglo_a_discretizar[b])
-                    {
-                        t = arreglo_a_discretizar[b - 1];
-                        arreglo_a_discretizar[b - 1] = arreglo_a_discretizar[b];
-                        arreglo_a_discretizar[b] = t;
-                    }
-            }
-            //Calcular cuantos elementos habrá por grupo
-            int intervalos = arreglo_a_discretizar.Length / intervaloDiscretizacion;
-            //asignar grupos
-            for (int i = 0; i< arreglo_a_discretizar.Length;i++)
-            {
-                if (i < intervalos)
-                {
-                    
-                }
-                else
-                {
-
-                }
-            }
-
-            return "";
-        }
 
         public void CalcularAccuracy()
         {
@@ -532,28 +553,65 @@ namespace naive_bayes
         public int AcumularTruePositives()
         {
             int truepositive = 0;
-            //acá se acumulan los true positives
+            //Es donde se intersectan las clases
             return truepositive;
         }
 
         public int AcumularTrueNegatives()
         {
             int truenegative = 0;
-            //acá se acumulan los true positives
+            //Suma las celdas que no consideran ninguno de los demás
             return truenegative;
         }
 
         public int AcumularFalsePositive()
         {
             int falsepositive = 0;
-            //acá se acumulan los true positives
+            //Toda la linea horizontal de la clase pero sin contemplar la intersección
             return falsepositive;
         }
         public int AcumularFalseNegative()
         {
             int falsenegative = 0;
-            //acá se acumulan los true positives
+            //Toda la linea vertical de la clase sin contar donde se intersectan
             return falsenegative;
+        }
+
+        public int BusquedaBinaria(String valor, decimal []vector, int []grupo)
+        {
+            //Variables para busqueda binaria
+            int centro;
+            int inf;
+            int sup;
+            int posicion_final = 0;
+            bool encontro = false;
+
+            inf = 0;
+            sup = vector.Length - 1;
+
+            while (inf <= sup && encontro == false)
+            {
+                centro = ((sup - inf) / 2) + inf;
+                if (vector[centro].ToString() == valor)
+                {
+                    posicion_final = centro; 
+                    encontro = true;
+                }
+                else
+                {
+                    int comparacion = valor.CompareTo(vector[centro].ToString());
+                    if (comparacion < 0)
+                    {
+                        sup = centro - 1;
+                    }
+                    else if (comparacion > 0)
+                    {
+                        inf = centro + 1;
+                    }
+                }
+            }
+
+            return posicion_final;
         }
     }
 }

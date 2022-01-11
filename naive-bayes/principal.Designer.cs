@@ -59,6 +59,7 @@ namespace naive_bayes
             this.rb_final = new MaterialSkin.Controls.MaterialRadioButton();
             this.rb_inicio = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.lb_pruebas = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_datos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -468,7 +469,7 @@ namespace naive_bayes
             this.rb_final.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb_final.Name = "rb_final";
             this.rb_final.Ripple = true;
-            this.rb_final.Size = new System.Drawing.Size(71, 30);
+            this.rb_final.Size = new System.Drawing.Size(67, 30);
             this.rb_final.TabIndex = 2;
             this.rb_final.TabStop = true;
             this.rb_final.Text = "Final";
@@ -485,7 +486,7 @@ namespace naive_bayes
             this.rb_inicio.MouseState = MaterialSkin.MouseState.HOVER;
             this.rb_inicio.Name = "rb_inicio";
             this.rb_inicio.Ripple = true;
-            this.rb_inicio.Size = new System.Drawing.Size(76, 30);
+            this.rb_inicio.Size = new System.Drawing.Size(72, 30);
             this.rb_inicio.TabIndex = 1;
             this.rb_inicio.TabStop = true;
             this.rb_inicio.Text = "Inicio";
@@ -501,9 +502,18 @@ namespace naive_bayes
             this.materialLabel10.Location = new System.Drawing.Point(26, 21);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(211, 30);
+            this.materialLabel10.Size = new System.Drawing.Size(169, 24);
             this.materialLabel10.TabIndex = 0;
             this.materialLabel10.Text = "Posición de clase?";
+            // 
+            // lb_pruebas
+            // 
+            this.lb_pruebas.FormattingEnabled = true;
+            this.lb_pruebas.ItemHeight = 16;
+            this.lb_pruebas.Location = new System.Drawing.Point(772, 172);
+            this.lb_pruebas.Name = "lb_pruebas";
+            this.lb_pruebas.Size = new System.Drawing.Size(715, 388);
+            this.lb_pruebas.TabIndex = 21;
             // 
             // principal
             // 
@@ -511,6 +521,7 @@ namespace naive_bayes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1570, 763);
             this.ControlBox = false;
+            this.Controls.Add(this.lb_pruebas);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
@@ -579,6 +590,7 @@ namespace naive_bayes
         private MaterialSkin.Controls.MaterialRadioButton rb_final;
         private MaterialSkin.Controls.MaterialRadioButton rb_inicio;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private System.Windows.Forms.ListBox lb_pruebas;
     }
 }
 
