@@ -35,3 +35,7 @@ Equipo 3
 *	Intervalos de anchos iguales,  No incluir funcion de densidad, no Intervalos de frecuencias iguales
 *	No incluir validacion cruzada
 *	No incluir archivo de pruebas externo
+
+## Hollis
+
+- pruebas
