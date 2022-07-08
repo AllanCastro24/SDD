@@ -521,7 +521,6 @@ namespace naive_bayes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1570, 763);
             this.ControlBox = false;
-            this.Controls.Add(this.lb_pruebas);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.materialLabel9);
             this.Controls.Add(this.materialLabel8);
@@ -540,6 +539,7 @@ namespace naive_bayes
             this.Controls.Add(this.txt_ruta_dataset);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.btn_salir);
+            this.Controls.Add(this.lb_pruebas);
             this.Name = "principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clasificador Naive - Bayes";

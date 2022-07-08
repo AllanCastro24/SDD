@@ -46,7 +46,7 @@ namespace naive_bayes
                 using (OpenFileDialog openFileDialog = new OpenFileDialog())
                 {
                     openFileDialog.InitialDirectory = "c:\\archivo";
-                    openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                    openFileDialog.Filter = "cvs files (*.csv)|*.csv|txt files (*.txt)|*.txt|All files (*.*)|*.*";
                     openFileDialog.FilterIndex = 2;
                     openFileDialog.RestoreDirectory = true;
 
